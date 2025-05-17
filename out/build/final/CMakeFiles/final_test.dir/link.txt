@@ -1,0 +1,3 @@
+D:\CMake\cmake-4.0.0-rc1-windows-x86_64\bin\cmake.exe -E rm -f CMakeFiles\final_test.dir/objects.a
+D:\minGW_latest\MinGW\bin\ar.exe qc CMakeFiles\final_test.dir/objects.a @CMakeFiles\final_test.dir\objects1.rsp
+d:\minGW_latest\MinGW\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\final_test.dir/objects.a -Wl,--no-whole-archive -o final_test.exe -Wl,--out-implib,libfinal_test.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\final_test.dir\linkLibs.rsp

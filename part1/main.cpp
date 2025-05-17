@@ -78,7 +78,7 @@ int main(){
     // vector<vector<float>> b2(1,vector<float>(10,0));
     model mod(w1r,b1r,w2r,b2r);
 
-    vector<vector<float>> xtmp(1,vector<float>(784,2.0));
+    vector<vector<float>> xtmp(1,vector<float>(784,1.0));
 
     matrix x(xtmp);
     auto r=mod.foward(x,mod);
