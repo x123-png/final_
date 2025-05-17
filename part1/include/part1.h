@@ -24,7 +24,8 @@ class model{
         std::vector<std::vector<float>> m_w2;
         std::vector<std::vector<float>> m_b2;
     model(std::vector<std::vector<float>>w1,std::vector<std::vector<float>>b1
-        ,std::vector<std::vector<float>>w2,std::vector<std::vector<float>>b2):m_w1(w1),m_b1(b1),m_w2(w2),m_b2(b2){};
-    std::vector<std::vector<float>> RELU(matrix);  //RELU函数，将矩阵中小于零的数变为0 
+        ,std::vector<std::vector<float>>w2,std::vector<std::vector<float>>b2):m_w1(w1),m_b1(b1),m_w2(w2),m_b2(b2){};  //构造函数没问题
+    std::vector<std::vector<float>> RELU(std::vector<std::vector<float>>);  //RELU函数，将矩阵中小于零的数变为0 
     std::vector<std::vector<float>> SoftMax(std::vector<std::vector<float>>); //SoftMax函数
+    std::vector<std::vector<float>> foward(matrix,model);//forward封装计算过程
 };
