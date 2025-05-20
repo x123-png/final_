@@ -10,11 +10,11 @@
                 "${file}",
                 "-o",
                 "${workspaceFolder}\\Debugger\\${fileBasenameNoExtension}.exe",
-                "D:/Opencv4.5.2/opencv/build/x64/mingw/install/x64/mingw/bin/libopencv_world452.dll",
+                "D:/opencv4.5.2-2/opencv/build/x64/mingw/install/x64/mingw/bin/libopencv_world452.dll",
                 "-I",
-                "D:/Opencv4.5.2/opencv/build/x64/mingw/install/include",
+                "D:/opencv4.5.2-2/opencv/build/x64/mingw/install/include",
                 "-I",
-                "D:/Opencv4.5.2/opencv/build/x64/mingw/install/include/opencv2"
+                "D:/opencv4.5.2-2/opencv/build/x64/mingw/install/include/opencv2"
             ],
             "options": {
                 "cwd": "D:/minGW_latest/MinGW/bin"

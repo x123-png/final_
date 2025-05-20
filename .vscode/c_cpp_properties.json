@@ -4,15 +4,15 @@
             "name": "Win64_latest",
             "includePath": [
                 "${workspaceFolder}/**",
-                "D:/Opencv4.5.2/opencv/build/x64/mingw/install/include",
-                "D:/Opencv4.5.2/opencv/build/x64/mingw/install/include/opencv2"
+                "D:/opencv4.5.2-2/opencv/build/x64/mingw/install/include",
+                "D:/opencv4.5.2-2/opencv/build/x64/mingw/install/include/opencv2"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "D:\\minGW_latest\\MinGW\\bin\\gcc.exe",
+            "compilerPath": "D:/minGW_latest/MinGW/bin/gcc.exe",
             "cStandard": "c23",
             "cppStandard": "gnu++23",
             "intelliSenseMode": "windows-gcc-x64"
