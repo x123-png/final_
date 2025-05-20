@@ -1,0 +1,31 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "opencv3.5.2",
+            "command": "D:/minGW_latest/MinGW/bin/g++.exe",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${workspaceFolder}\\Debugger\\${fileBasenameNoExtension}.exe",
+                "D:/Opencv4.5.2/opencv/build/x64/mingw/install/x64/mingw/bin/libopencv_world452.dll",
+                "-I",
+                "D:/Opencv4.5.2/opencv/build/x64/mingw/install/include",
+                "-I",
+                "D:/Opencv4.5.2/opencv/build/x64/mingw/install/include/opencv2"
+            ],
+            "options": {
+                "cwd": "D:/minGW_latest/MinGW/bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

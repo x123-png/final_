@@ -8,3 +8,4 @@ file(GLOB_RECURSE SRC_FILE ${CODE_PATH}/*.cpp)
 include_directories(${CODE_PATH} ${CODE_PATH}/include)
 add_executable(${PROJECT_NAME} ${SRC_FILE})
 include_directories(${CMAKE_SOURCE_DIR}/include)  # 添加全局 include 目录
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/include)

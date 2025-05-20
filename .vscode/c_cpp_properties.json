@@ -3,7 +3,9 @@
         {
             "name": "Win64_latest",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "D:/Opencv4.5.2/opencv/build/x64/mingw/install/include",
+                "D:/Opencv4.5.2/opencv/build/x64/mingw/install/include/opencv2"
             ],
             "defines": [
                 "_DEBUG",
