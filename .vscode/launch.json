@@ -11,7 +11,12 @@
             "args": [],
             "stopAtEntry": false, //这里如果为 false，则说明调试直接运行。（反之则停止）
             "cwd": "${workspaceFolder}",
-            "environment": [],
+            "environment": [
+                {
+                    "name": "PATH",
+                    "value": "D:\\opencv4.5.2-2\\opencv\\build\\x64\\mingw\\install\\x64\\mingw\\bin"
+                }
+            ],
             "externalConsole": true,//是否调用外部cmd
             "MIMode": "gdb",
             "miDebuggerPath": "D:\\minGW_latest\\MinGW\\bin\\gdb.exe",//自己进行设置
@@ -22,7 +27,7 @@
                     "ignoreFailures": false
                 }
             ],
-            "preLaunchTask": "opencv3.5.2"
+            "preLaunchTask": "opencv4.5.2"
         }
     ]
 }

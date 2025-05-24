@@ -2,8 +2,8 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "type": "shell",
-            "label": "opencv3.5.2",
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe build active file",
             "command": "D:/minGW_latest/MinGW/bin/g++.exe",
             "args": [
                 "-g",
@@ -24,7 +24,7 @@
             ],
             "group": {
                 "kind": "build",
-                "isDefault": true
+                "isDefault": false
             }
         }
     ]

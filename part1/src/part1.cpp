@@ -2,11 +2,13 @@
 #include <iostream>
 #include <cmath>
 
-std::vector<std::vector<float>> matrix::getMatrix(){
+template<class T>
+std::vector<std::vector<T>> matrix<T>::getMatrix(){
     return localMatrix;
 }
 
-std::vector<std::vector<float>> matrix::addMatrix(std::vector<std::vector<float>> matr){
+template<class T>
+std::vector<std::vector<T>> matrix<T>::addMatrix(std::vector<std::vector<T>> matr){
     for(int l=0;l<line;l++){
         for(int r=0;r<row;r++){
             localMatrix[l][r]+=matr[l][r];
@@ -15,16 +17,19 @@ std::vector<std::vector<float>> matrix::addMatrix(std::vector<std::vector<float>
     return localMatrix;
 }
 
-int matrix::getLine(){
+template<class T>
+int matrix<T>::getLine(){
     return line;
 }
 
-int matrix::getRow(){
+template<class T>
+int matrix<T>::getRow(){
     return row;
 }
 
-std::vector<std::vector<float>> matrix::multiplyMatrix(std::vector<std::vector<float>> const matr){
-    std::vector<std::vector<float>> result(line,std::vector<float>(matr[0].size(),0.0f));
+template<class T>
+std::vector<std::vector<T>> matrix<T>::multiplyMatrix(std::vector<std::vector<T>> const matr){
+    std::vector<std::vector<T>> result(line,std::vector<T>(matr[0].size(),0.0f));
     for(int l=0;l<line;l++){  //结果的行
         for(int r=0;r<matr[0].size();r++){  
             for(int i=0;i<row;i++){
@@ -35,7 +40,8 @@ std::vector<std::vector<float>> matrix::multiplyMatrix(std::vector<std::vector<f
     return result;
 }
 
-std::vector<std::vector<float>> model::RELU(std::vector<std::vector<float>> m){
+template<class T>
+std::vector<std::vector<T>> model<T>::RELU(std::vector<std::vector<T>> m){
     for(int l=0;l<m.size();l++){
         for(int r=0;r<m[0].size();r++){
             if(m[l][r]<0) m[l][r]=0;
@@ -44,9 +50,10 @@ std::vector<std::vector<float>> model::RELU(std::vector<std::vector<float>> m){
     return m;
 }
 
-std::vector<std::vector<float>> model::SoftMax(std::vector<std::vector<float>> v){
+template<class T>
+std::vector<std::vector<T>> model<T>::SoftMax(std::vector<std::vector<T>> v){
     double e=exp(1);   //e是e^1
-    std::vector<std::vector<float>> soft(1,std::vector<float>(10,0.0f));
+    std::vector<std::vector<T>> soft(1,std::vector<T>(10,0.0f));
     float deno=0;  //分母
     for(int i=0;i<v[0].size();i++){
         deno+=std::pow(e,v[0][i]);
@@ -57,8 +64,15 @@ std::vector<std::vector<float>> model::SoftMax(std::vector<std::vector<float>> v
     return soft;
 }
 
-std::vector<std::vector<float>> model::foward(matrix x,model mod){
-    
+std::vector<std::vector<float>> model_float::foward(matrix<float>& x,model<float>& mod){    
+    matrix tmpMatr(x.multiplyMatrix(mod.m_w1));  //x*w1
+    matrix tmp1Matr(mod.RELU(tmpMatr.addMatrix(mod.m_b1)));//完成relu(x * w1 + b1)操作
+    matrix tmp2Matr(tmp1Matr.multiplyMatrix(mod.m_w2));  //relu(x * w1 + b1) * w2
+    auto r=mod.SoftMax(tmp2Matr.addMatrix(mod.m_b2));  //完成softmax(relu(x * w1 + b1) * w2 + b2),r是公式计算结果向量
+    return r;
+}
+
+std::vector<std::vector<double>> model_double::foward(matrix<double>& x,model<double>& mod){    
     matrix tmpMatr(x.multiplyMatrix(mod.m_w1));  //x*w1
     matrix tmp1Matr(mod.RELU(tmpMatr.addMatrix(mod.m_b1)));//完成relu(x * w1 + b1)操作
     matrix tmp2Matr(tmp1Matr.multiplyMatrix(mod.m_w2));  //relu(x * w1 + b1) * w2
