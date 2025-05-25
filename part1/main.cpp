@@ -77,7 +77,7 @@ int main(){
         vector<vector<float>> w2r(j_value[2][0],vector<float>(j_value[2][1],0));
         vector<vector<float>> b2r(j_value[3][0],vector<float>(j_value[3][1],0));
         model_float A(w1r,b1r,w2r,b2r);
-        model<float>* mod=&A;
+        model<float>* mod=&A;  //抽象类不能直接创建需要通过派生类构造
         mod=modelptr(ifsw1,w1r,j_value[0][0],j_value[0][1],ifsb1,b1r,j_value[1][0],j_value[1][1],ifsw2,w2r,j_value[2][0],j_value[2][1],ifsb2,b2r,j_value[3][0],j_value[3][1],mod);
         
         vector<vector<float>> xtmp(1,vector<float>(784,1.0f));
@@ -94,7 +94,7 @@ int main(){
         vector<vector<double>> w2r(j_value[2][0],vector<double>(j_value[2][1],0));
         vector<vector<double>> b2r(j_value[3][0],vector<double>(j_value[3][1],0));
         model_double B(w1r,b1r,w2r,b2r);
-        model<double>* mod=&B;
+        model<double>* mod=&B;  
         mod=modelptr(ifsw1,w1r,j_value[0][0],j_value[0][1],ifsb1,b1r,j_value[1][0],j_value[1][1],ifsw2,w2r,j_value[2][0],j_value[2][1],ifsb2,b2r,j_value[3][0],j_value[3][1],mod);
         
         vector<vector<double>> xtmp(1,vector<double>(784,1.0f));
