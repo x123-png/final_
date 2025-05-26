@@ -1,7 +1,9 @@
 #include "part1.h"
 #include <iostream>
 #include <cmath>
-
+#include <thread>
+//共有20个线程
+//本程序中l是行，r是列
 template<class T>
 std::vector<std::vector<T>> matrix<T>::getMatrix(){
     return localMatrix;
@@ -27,9 +29,16 @@ int matrix<T>::getRow(){
     return row;
 }
 
+//矩阵的乘法A*B
 template<class T>
-std::vector<std::vector<T>> matrix<T>::multiplyMatrix(std::vector<std::vector<T>> const matr){
-    std::vector<std::vector<T>> result(line,std::vector<T>(matr[0].size(),0.0f));
+std::vector<std::vector<T>> matrix<T>::multiplyMatrix(std::vector<std::vector<T>> const matr){  //乘以的矩阵
+    std::vector<std::vector<T>> result(line,std::vector<T>(matr[0].size(),0));  //初始化结果矩阵
+    int lineA=line;
+    int rowB=matr[0].size();
+    int threadNum=20;
+    std::vector<thread> threads; //每次运行的线程
+    int linesPerThread=lineA/threadNum;//每次处理的行数
+
     for(int l=0;l<line;l++){  //结果的行
         for(int r=0;r<matr[0].size();r++){  
             for(int i=0;i<row;i++){
@@ -53,7 +62,7 @@ std::vector<std::vector<T>> model<T>::RELU(std::vector<std::vector<T>> m){
 template<class T>
 std::vector<std::vector<T>> model<T>::SoftMax(std::vector<std::vector<T>> v){
     double e=exp(1);   //e是e^1
-    std::vector<std::vector<T>> soft(1,std::vector<T>(10,0.0f));
+    std::vector<std::vector<T>> soft(1,std::vector<T>(10,0));
     float deno=0;  //分母
     for(int i=0;i<v[0].size();i++){
         deno+=std::pow(e,v[0][i]);

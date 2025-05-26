@@ -3,10 +3,11 @@
 #include <iostream>
 #include <string>
 #include <nlohmann/json.hpp>
+#include <chrono>
 using namespace std;
 using json = nlohmann::json;
 
-////***读取type字段确定矩阵数据类型*** */
+//r是行（row），c是列（column）
 
 template<typename T>
 void read_file(ifstream& file,vector<vector<T>>& v,int l,int r);
@@ -82,7 +83,11 @@ int main(){
         
         vector<vector<float>> xtmp(1,vector<float>(784,1.0f));
         matrix x(xtmp);
+        auto start=chrono::high_resolution_clock::now();  //开始记录时间
         auto r=mod->foward(x,*mod);
+        auto stop=chrono::high_resolution_clock::now();//程序运行结束时间
+        auto time=chrono::duration_cast<chrono::milliseconds>(stop-start);
+        cout<<"time:"<<time<<"/n"<<endl;   //初始时间
 
         for(int i=0;i<10;i++){
             cout<<r[0][i]<<" ";
@@ -99,7 +104,11 @@ int main(){
         
         vector<vector<double>> xtmp(1,vector<double>(784,1.0f));
         matrix x(xtmp);
+        auto start=chrono::high_resolution_clock::now();  //开始记录时间
         auto r=mod->foward(x,*mod);
+        auto stop=chrono::high_resolution_clock::now();//程序运行结束时间
+        auto time=chrono::duration_cast<chrono::milliseconds>(stop-start);
+        cout<<"time:"<<time<<"/n"<<endl;   //初始时间10ms,6ms
 
         for(int i=0;i<10;i++){
             cout<<r[0][i]<<" ";
@@ -111,6 +120,7 @@ int main(){
     ifsw2.close();
     ifsb2.close();
     j_file.close();
+    return 0;
 }
 
 template<typename T>
