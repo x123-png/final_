@@ -4,6 +4,9 @@
 #include <string>
 #include <nlohmann/json.hpp>
 #include <chrono>
+#include <cstring>
+#include <winsock2.h>
+#pragma comment(lib,"ws_32.lib")
 using namespace std;
 using json = nlohmann::json;
 
@@ -16,6 +19,28 @@ template<typename T>
 model<T>* modelptr(ifstream&,vector<vector<T>>&,int,int,ifstream&,vector<vector<T>>&,int,int,ifstream&,vector<vector<T>>&,int,int,ifstream&,vector<vector<T>>&,int,int,model<T>*&);
 
 int main(){
+    WSADATA WSAData;
+    WSAStartup(MAKEWORD(2,2),&WSAData);
+
+    SOCKET listen_socket=socket(AF_INET,SOCK_STREAM,0);
+    if(listen_socket==INVALID_SOCKET){
+        cerr<<"socket创建失败"<<endl;
+        return -1;
+    }
+
+    struct sockaddr_in local={0};
+    local.sin_family = AF_INET;
+    local.sin_addr.s_addr=INADDR_ANY;
+    local.sin_port=htons(9999);
+    if(bind(listen_socket,(struct sockaddr*)&local,sizeof(local))==INVALID_SOCKET){
+        cerr<<"bind error"<<endl;
+        return -1;
+    }
+    if(listen(listen_socket,128)==SOCKET_ERROR){
+        cerr<<"listen error"<<endl;
+        return -1;
+    }
+
     //读取二进制文件中的矩阵信息
     //读取矩阵大小
     string type;
@@ -81,7 +106,7 @@ int main(){
         model<float>* mod=&A;  //抽象类不能直接创建需要通过派生类构造
         mod=modelptr(ifsw1,w1r,j_value[0][0],j_value[0][1],ifsb1,b1r,j_value[1][0],j_value[1][1],ifsw2,w2r,j_value[2][0],j_value[2][1],ifsb2,b2r,j_value[3][0],j_value[3][1],mod);
         
-        vector<vector<float>> xtmp(1,vector<float>(784,1.0f));
+        vector<vector<float>> xtmp(1,vector<float>(784,1));
         matrix x(xtmp);
         auto start=chrono::high_resolution_clock::now();  //开始记录时间
         auto r=mod->foward(x,*mod);
@@ -102,7 +127,7 @@ int main(){
         model<double>* mod=&B;  
         mod=modelptr(ifsw1,w1r,j_value[0][0],j_value[0][1],ifsb1,b1r,j_value[1][0],j_value[1][1],ifsw2,w2r,j_value[2][0],j_value[2][1],ifsb2,b2r,j_value[3][0],j_value[3][1],mod);
         
-        vector<vector<double>> xtmp(1,vector<double>(784,1.0f));
+        vector<vector<double>> xtmp(1,vector<double>(784,1));
         matrix x(xtmp);
         auto start=chrono::high_resolution_clock::now();  //开始记录时间
         auto r=mod->foward(x,*mod);
