@@ -1,7 +1,6 @@
 #include "part1.h"
 #include <iostream>
 #include <cmath>
-#include <thread>
 //共有20个线程
 //本程序中l是行，r是列
 template<class T>
@@ -35,19 +34,39 @@ std::vector<std::vector<T>> matrix<T>::multiplyMatrix(std::vector<std::vector<T>
     std::vector<std::vector<T>> result(line,std::vector<T>(matr[0].size(),0));  //初始化结果矩阵
     int lineA=line;
     int rowB=matr[0].size();
-    int threadNum=20;
-    std::vector<thread> threads; //每次运行的线程
+    int threadNum=std::thread::hardware_concurrency();
+    std::vector<std::thread> threads; //每次运行的线程
     int linesPerThread=lineA/threadNum;//每次处理的行数
 
-    for(int l=0;l<line;l++){  //结果的行
-        for(int r=0;r<matr[0].size();r++){  
-            for(int i=0;i<row;i++){
-                result[l][r]+=localMatrix[l][i]*matr[i][r];
+    for(int k=0;k<threadNum;k++){
+        int startLine=k*linesPerThread;
+        int endLine=(k==threadNum-1)?lineA:(startLine+linesPerThread);
+
+        threads.emplace_back([&result,startLine,endLine,rowB,this,&matr](){
+            for(int i=0;i<this->row;i++){  
+                for(int l=startLine;l<endLine;l++){ //结果的行 
+                    for(int r=0;r<rowB;r++){
+                        result[l][r]+=this->localMatrix[l][i]*matr[i][r];
+                    }
+                }        
             }
-        }        
+        });
     }
+    
+    for(auto& t:threads){
+        if(t.joinable()){
+            t.join();
+        }
+    }
+    // for(int l=0;l<line;l++){  
+    //     for(int r=0;r<matr[0].size();r++){ //结果的行 
+    //         for(int i=0;i<row;i++){
+    //             result[l][r]+=localMatrix[l][i]*matr[i][r];
+    //         }
+    //     }        
+    // }
     return result;
-}
+}    
 
 template<class T>
 std::vector<std::vector<T>> model<T>::RELU(std::vector<std::vector<T>> m){
@@ -67,7 +86,7 @@ std::vector<std::vector<T>> model<T>::SoftMax(std::vector<std::vector<T>> v){
     for(int i=0;i<v[0].size();i++){
         deno+=std::pow(e,v[0][i]);
     }
-    for(int i=0;i<v.size();i++){
+    for(int i=0;i<v[0].size();i++){
         soft[0][i]=std::pow(e,v[0][i])/deno;
     }
     return soft;

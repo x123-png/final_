@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <thread>
 
 //矩阵类,完成确定矩阵的大小，矩阵的乘法和加法
 template<class T>
@@ -7,7 +8,7 @@ class matrix{
     private:
         std::vector<std::vector<T>> localMatrix; //矩阵
         int line; //行数大小
-        int row;   //列大小 
+        int row;   //列大小
     public:
     int getLine();
     int getRow();
