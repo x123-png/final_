@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "D:/GKD_final_test/part1/client_use.cpp" "CMakeFiles/final_test.dir/part1/client_use.cpp.obj" "gcc" "CMakeFiles/final_test.dir/part1/client_use.cpp.obj.d"
   "D:/GKD_final_test/part1/main.cpp" "CMakeFiles/final_test.dir/part1/main.cpp.obj" "gcc" "CMakeFiles/final_test.dir/part1/main.cpp.obj.d"
   "D:/GKD_final_test/part1/src/part1.cpp" "CMakeFiles/final_test.dir/part1/src/part1.cpp.obj" "gcc" "CMakeFiles/final_test.dir/part1/src/part1.cpp.obj.d"
   )

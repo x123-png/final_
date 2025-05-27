@@ -128,12 +128,66 @@ final_test/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\final_test.dir\build.make CMakeFiles/final_test.dir/build
 .PHONY : final_test/fast
 
+#=============================================================================
+# Target rules for targets named server
+
+# Build rule for target.
+server: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 server
+.PHONY : server
+
+# fast build rule for target.
+server/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\server.dir\build.make CMakeFiles/server.dir/build
+.PHONY : server/fast
+
+#=============================================================================
+# Target rules for targets named client
+
+# Build rule for target.
+client: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 client
+.PHONY : client
+
+# fast build rule for target.
+client/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\client.dir\build.make CMakeFiles/client.dir/build
+.PHONY : client/fast
+
+part1/client_use.obj: part1/client_use.cpp.obj
+.PHONY : part1/client_use.obj
+
+# target to build an object file
+part1/client_use.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\final_test.dir\build.make CMakeFiles/final_test.dir/part1/client_use.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\client.dir\build.make CMakeFiles/client.dir/part1/client_use.cpp.obj
+.PHONY : part1/client_use.cpp.obj
+
+part1/client_use.i: part1/client_use.cpp.i
+.PHONY : part1/client_use.i
+
+# target to preprocess a source file
+part1/client_use.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\final_test.dir\build.make CMakeFiles/final_test.dir/part1/client_use.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\client.dir\build.make CMakeFiles/client.dir/part1/client_use.cpp.i
+.PHONY : part1/client_use.cpp.i
+
+part1/client_use.s: part1/client_use.cpp.s
+.PHONY : part1/client_use.s
+
+# target to generate assembly for a file
+part1/client_use.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\final_test.dir\build.make CMakeFiles/final_test.dir/part1/client_use.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\client.dir\build.make CMakeFiles/client.dir/part1/client_use.cpp.s
+.PHONY : part1/client_use.cpp.s
+
 part1/main.obj: part1/main.cpp.obj
 .PHONY : part1/main.obj
 
 # target to build an object file
 part1/main.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\final_test.dir\build.make CMakeFiles/final_test.dir/part1/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\server.dir\build.make CMakeFiles/server.dir/part1/main.cpp.obj
 .PHONY : part1/main.cpp.obj
 
 part1/main.i: part1/main.cpp.i
@@ -142,6 +196,7 @@ part1/main.i: part1/main.cpp.i
 # target to preprocess a source file
 part1/main.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\final_test.dir\build.make CMakeFiles/final_test.dir/part1/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\server.dir\build.make CMakeFiles/server.dir/part1/main.cpp.i
 .PHONY : part1/main.cpp.i
 
 part1/main.s: part1/main.cpp.s
@@ -150,6 +205,7 @@ part1/main.s: part1/main.cpp.s
 # target to generate assembly for a file
 part1/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\final_test.dir\build.make CMakeFiles/final_test.dir/part1/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\server.dir\build.make CMakeFiles/server.dir/part1/main.cpp.s
 .PHONY : part1/main.cpp.s
 
 part1/src/part1.obj: part1/src/part1.cpp.obj
@@ -184,7 +240,12 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... client
 	@echo ... final_test
+	@echo ... server
+	@echo ... part1/client_use.obj
+	@echo ... part1/client_use.i
+	@echo ... part1/client_use.s
 	@echo ... part1/main.obj
 	@echo ... part1/main.i
 	@echo ... part1/main.s

@@ -46,3 +46,6 @@ class model_double:public model<double>{
             ,std::vector<std::vector<double>>w2,std::vector<std::vector<double>>b2):model<double>(w1,b1,w2,b2){};
         std::vector<std::vector<double>> foward(matrix<double>&,model<double>&) override;
 };
+
+template class model<float>;
+template class model<double>;

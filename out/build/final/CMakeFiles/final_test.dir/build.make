@@ -71,11 +71,26 @@ include CMakeFiles/final_test.dir/flags.make
 CMakeFiles/final_test.dir/codegen:
 .PHONY : CMakeFiles/final_test.dir/codegen
 
+CMakeFiles/final_test.dir/part1/client_use.cpp.obj: CMakeFiles/final_test.dir/flags.make
+CMakeFiles/final_test.dir/part1/client_use.cpp.obj: CMakeFiles/final_test.dir/includes_CXX.rsp
+CMakeFiles/final_test.dir/part1/client_use.cpp.obj: D:/GKD_final_test/part1/client_use.cpp
+CMakeFiles/final_test.dir/part1/client_use.cpp.obj: CMakeFiles/final_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\GKD_final_test\out\build\final\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/final_test.dir/part1/client_use.cpp.obj"
+	d:\minGW_latest\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/final_test.dir/part1/client_use.cpp.obj -MF CMakeFiles\final_test.dir\part1\client_use.cpp.obj.d -o CMakeFiles\final_test.dir\part1\client_use.cpp.obj -c D:\GKD_final_test\part1\client_use.cpp
+
+CMakeFiles/final_test.dir/part1/client_use.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/final_test.dir/part1/client_use.cpp.i"
+	d:\minGW_latest\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\GKD_final_test\part1\client_use.cpp > CMakeFiles\final_test.dir\part1\client_use.cpp.i
+
+CMakeFiles/final_test.dir/part1/client_use.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/final_test.dir/part1/client_use.cpp.s"
+	d:\minGW_latest\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\GKD_final_test\part1\client_use.cpp -o CMakeFiles\final_test.dir\part1\client_use.cpp.s
+
 CMakeFiles/final_test.dir/part1/main.cpp.obj: CMakeFiles/final_test.dir/flags.make
 CMakeFiles/final_test.dir/part1/main.cpp.obj: CMakeFiles/final_test.dir/includes_CXX.rsp
 CMakeFiles/final_test.dir/part1/main.cpp.obj: D:/GKD_final_test/part1/main.cpp
 CMakeFiles/final_test.dir/part1/main.cpp.obj: CMakeFiles/final_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\GKD_final_test\out\build\final\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/final_test.dir/part1/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\GKD_final_test\out\build\final\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/final_test.dir/part1/main.cpp.obj"
 	d:\minGW_latest\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/final_test.dir/part1/main.cpp.obj -MF CMakeFiles\final_test.dir\part1\main.cpp.obj.d -o CMakeFiles\final_test.dir\part1\main.cpp.obj -c D:\GKD_final_test\part1\main.cpp
 
 CMakeFiles/final_test.dir/part1/main.cpp.i: cmake_force
@@ -90,7 +105,7 @@ CMakeFiles/final_test.dir/part1/src/part1.cpp.obj: CMakeFiles/final_test.dir/fla
 CMakeFiles/final_test.dir/part1/src/part1.cpp.obj: CMakeFiles/final_test.dir/includes_CXX.rsp
 CMakeFiles/final_test.dir/part1/src/part1.cpp.obj: D:/GKD_final_test/part1/src/part1.cpp
 CMakeFiles/final_test.dir/part1/src/part1.cpp.obj: CMakeFiles/final_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\GKD_final_test\out\build\final\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/final_test.dir/part1/src/part1.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\GKD_final_test\out\build\final\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/final_test.dir/part1/src/part1.cpp.obj"
 	d:\minGW_latest\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/final_test.dir/part1/src/part1.cpp.obj -MF CMakeFiles\final_test.dir\part1\src\part1.cpp.obj.d -o CMakeFiles\final_test.dir\part1\src\part1.cpp.obj -c D:\GKD_final_test\part1\src\part1.cpp
 
 CMakeFiles/final_test.dir/part1/src/part1.cpp.i: cmake_force
@@ -103,19 +118,21 @@ CMakeFiles/final_test.dir/part1/src/part1.cpp.s: cmake_force
 
 # Object files for target final_test
 final_test_OBJECTS = \
+"CMakeFiles/final_test.dir/part1/client_use.cpp.obj" \
 "CMakeFiles/final_test.dir/part1/main.cpp.obj" \
 "CMakeFiles/final_test.dir/part1/src/part1.cpp.obj"
 
 # External object files for target final_test
 final_test_EXTERNAL_OBJECTS =
 
+final_test.exe: CMakeFiles/final_test.dir/part1/client_use.cpp.obj
 final_test.exe: CMakeFiles/final_test.dir/part1/main.cpp.obj
 final_test.exe: CMakeFiles/final_test.dir/part1/src/part1.cpp.obj
 final_test.exe: CMakeFiles/final_test.dir/build.make
 final_test.exe: CMakeFiles/final_test.dir/linkLibs.rsp
 final_test.exe: CMakeFiles/final_test.dir/objects1.rsp
 final_test.exe: CMakeFiles/final_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\GKD_final_test\out\build\final\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable final_test.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\GKD_final_test\out\build\final\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable final_test.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\final_test.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
