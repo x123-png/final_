@@ -18,6 +18,12 @@ void read_file(ifstream& file,vector<vector<T>>& v,int l,int r);
 template<typename T>
 model<T>* modelptr(ifstream&,vector<vector<T>>&,int,int,ifstream&,vector<vector<T>>&,int,int,ifstream&,vector<vector<T>>&,int,int,ifstream&,vector<vector<T>>&,int,int,model<T>*&);
 
+template<typename T>
+void creatmatrix(char [],vector<vector<T>>&);
+
+template<typename T>
+void vectorTrance(vector<vector<T>>&,char []);
+
 int main(){
     WSADATA WSAData;
     WSAStartup(MAKEWORD(2,2),&WSAData);
@@ -38,6 +44,16 @@ int main(){
     }
     if(listen(listen_socket,128)==SOCKET_ERROR){
         cerr<<"listen error"<<endl;
+        return -1;
+    }
+
+    SOCKET client_socket=accept(listen_socket,nullptr,nullptr);
+    cout<<"client connect:"<<client_socket<<endl;
+
+    char buffer[1024]={""};
+    int ret=recv(client_socket,buffer,sizeof buffer,0);
+    if(ret<=0){
+        cout<<"client disconnect"<<client_socket<<endl;
         return -1;
     }
 
@@ -106,13 +122,18 @@ int main(){
         model<float>* mod=&A;  //抽象类不能直接创建需要通过派生类构造
         mod=modelptr(ifsw1,w1r,j_value[0][0],j_value[0][1],ifsb1,b1r,j_value[1][0],j_value[1][1],ifsw2,w2r,j_value[2][0],j_value[2][1],ifsb2,b2r,j_value[3][0],j_value[3][1],mod);
         
-        vector<vector<float>> xtmp(1,vector<float>(784,1));
+        vector<vector<float>> xtmp(1,vector<float>(784,0));
+        creatmatrix(buffer,xtmp);
         matrix x(xtmp);
         auto start=chrono::high_resolution_clock::now();  //开始记录时间
         auto r=mod->foward(x,*mod);
         auto stop=chrono::high_resolution_clock::now();//程序运行结束时间
         auto time=chrono::duration_cast<chrono::milliseconds>(stop-start);
-        cout<<"time:"<<time<<"/n"<<endl;   //初始时间
+        cout<<"time:"<<time<<"/n"<<endl;   
+
+        char send_buffer[1024]={""};
+        vectorTrance(r,send_buffer);  //将结果矩阵转换成字符传递回去
+        send(client_socket,send_buffer,strlen(send_buffer),0);
 
         for(int i=0;i<10;i++){
             cout<<r[0][i]<<" ";
@@ -127,13 +148,18 @@ int main(){
         model<double>* mod=&B;  
         mod=modelptr(ifsw1,w1r,j_value[0][0],j_value[0][1],ifsb1,b1r,j_value[1][0],j_value[1][1],ifsw2,w2r,j_value[2][0],j_value[2][1],ifsb2,b2r,j_value[3][0],j_value[3][1],mod);
         
-        vector<vector<double>> xtmp(1,vector<double>(784,1));
+        vector<vector<double>> xtmp(1,vector<double>(784,0));
+        creatmatrix(buffer,xtmp);
         matrix x(xtmp);
         auto start=chrono::high_resolution_clock::now();  //开始记录时间
         auto r=mod->foward(x,*mod);
         auto stop=chrono::high_resolution_clock::now();//程序运行结束时间
-        auto time=chrono::duration_cast<chrono::milliseconds>(stop-start);
+        auto time=chrono::duration_cast<chrono::milliseconds>(stop-start);        
         cout<<"time:"<<time<<"/n"<<endl;   //初始时间10ms,6ms
+
+        char send_buffer[1024]={""};
+        vectorTrance(r,send_buffer);
+        send(client_socket,send_buffer,strlen(send_buffer),0);
 
         for(int i=0;i<10;i++){
             cout<<r[0][i]<<" ";
@@ -145,6 +171,9 @@ int main(){
     ifsw2.close();
     ifsb2.close();
     j_file.close();
+    closesocket(client_socket);
+    closesocket(listen_socket);
+    WSACleanup();
     return 0;
 }
 
@@ -172,4 +201,18 @@ model<T>* modelptr(ifstream& ifsw1,vector<vector<T>>& w1r,int l_w1,int R_w1,ifst
         p->m_w2=w2r;
         p->m_b2=b2r;
         return p;
+}
+
+template<typename T>
+void creatmatrix(char buffer[],vector<vector<T>>& x){
+    for(int i=0;i<(int)sizeof(buffer);i++){
+        x[0][i]=buffer[i];
+    }
+}
+
+template<typename T>
+void vectorTrance(vector<vector<T>>& x,char buffer_send[]){
+    for(int i=0;i<(x.size())*(x[0].size());i++){
+        buffer_send[i]=x[0][i];
+    }
 }

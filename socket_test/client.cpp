@@ -27,9 +27,12 @@ int main(){
 
     char buffer[1024]={""};
     for(int i=0;i<784;i++){
-        buffer[i]=1;
+        buffer[i]='1';
     }
 
+    for(int i=0;i<sizeof(buffer);i++){
+        cout<<buffer[i]<<" ";
+    }
     send(client_socket,buffer,sizeof buffer,0);
 
     char buffer2[1024]={""};
