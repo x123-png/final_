@@ -14,5 +14,12 @@
                 "CMAKE_BUILD_TYPE": "Debug"
             }
         }
+    ],
+    "buildPresets": [
+        {
+            "name": "client",
+            "description": "",
+            "displayName": ""
+        }
     ]
 }

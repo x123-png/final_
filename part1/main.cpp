@@ -46,7 +46,7 @@ int main(){
         cerr<<"listen error"<<endl;
         return -1;
     }
-
+    cout<<"listen on port 9999"<<endl;
     SOCKET client_socket=accept(listen_socket,nullptr,nullptr);
     cout<<"client connect:"<<client_socket<<endl;
 

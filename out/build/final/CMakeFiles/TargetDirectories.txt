@@ -1,4 +1,3 @@
-D:/GKD_final_test/out/build/final/CMakeFiles/final_test.dir
 D:/GKD_final_test/out/build/final/CMakeFiles/server.dir
 D:/GKD_final_test/out/build/final/CMakeFiles/client.dir
 D:/GKD_final_test/out/build/final/CMakeFiles/edit_cache.dir
