@@ -2,7 +2,7 @@
     "version": 8,
     "configurePresets": [
         {
-            "name": "final",
+            "name": "GCC 13.2.0 x86_64-w64-mingw32",
             "displayName": "GCC 13.2.0 x86_64-w64-mingw32",
             "description": "正在使用编译器: C = d:\\minGW_latest\\MinGW\\bin\\gcc.exe, CXX = d:\\minGW_latest\\MinGW\\bin\\g++.exe",
             "generator": "MinGW Makefiles",
@@ -13,13 +13,6 @@
                 "CMAKE_CXX_COMPILER": "d:/minGW_latest/MinGW/bin/g++.exe",
                 "CMAKE_BUILD_TYPE": "Debug"
             }
-        }
-    ],
-    "buildPresets": [
-        {
-            "name": "client",
-            "description": "",
-            "displayName": ""
         }
     ]
 }

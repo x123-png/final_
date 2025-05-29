@@ -129,7 +129,7 @@ int main(){
         auto r=mod->foward(x,*mod);
         auto stop=chrono::high_resolution_clock::now();//程序运行结束时间
         auto time=chrono::duration_cast<chrono::milliseconds>(stop-start);
-        cout<<"time:"<<time<<"/n"<<endl;   
+        //cout<<"time:"<<time<<"/n"<<endl;   
 
         char send_buffer[1024]={""};
         vectorTrance(r,send_buffer);  //将结果矩阵转换成字符传递回去
@@ -155,7 +155,7 @@ int main(){
         auto r=mod->foward(x,*mod);
         auto stop=chrono::high_resolution_clock::now();//程序运行结束时间
         auto time=chrono::duration_cast<chrono::milliseconds>(stop-start);        
-        cout<<"time:"<<time<<"/n"<<endl;   
+        //cout<<"time:"<<time<<"/n"<<endl;   
 
         char send_buffer[1024]={""};
         vectorTrance(r,send_buffer);

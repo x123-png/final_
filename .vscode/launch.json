@@ -14,7 +14,7 @@
             "environment": [
                 {
                     "name": "PATH",
-                    "value": "D:\\opencv4.5.2-2\\opencv\\build\\x64\\mingw\\install\\x64\\mingw\\bin"
+                    "value": "D:\\opencv4.5.2__second\\opencv\\build\\x64\\mingw\\install\\x64\\mingw\\bin"
                 }
             ],
             "externalConsole": true,//是否调用外部cmd
