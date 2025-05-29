@@ -8,7 +8,7 @@ file(GLOB_RECURSE SRC_FILE ${CODE_PATH}/*.cpp)
 include_directories(${CODE_PATH} ${CODE_PATH}/include ${CMAKE_SOURCE_DIR}/include)
 
 add_executable(server ${CODE_PATH}/main.cpp part1/src/part1.cpp)
-add_executable(client ${CODE_PATH}/client_use.cpp)
+add_executable(client ${CODE_PATH}/client_use.cpp part1/src/part1.cpp)
 
 target_include_directories(server PRIVATE ${CMAKE_SOURCE_DIR}/include)
 target_include_directories(client PRIVATE ${CMAKE_SOURCE_DIR}/include)

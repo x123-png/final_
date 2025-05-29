@@ -195,6 +195,7 @@ part1/src/part1.obj: part1/src/part1.cpp.obj
 # target to build an object file
 part1/src/part1.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\server.dir\build.make CMakeFiles/server.dir/part1/src/part1.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\client.dir\build.make CMakeFiles/client.dir/part1/src/part1.cpp.obj
 .PHONY : part1/src/part1.cpp.obj
 
 part1/src/part1.i: part1/src/part1.cpp.i
@@ -203,6 +204,7 @@ part1/src/part1.i: part1/src/part1.cpp.i
 # target to preprocess a source file
 part1/src/part1.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\server.dir\build.make CMakeFiles/server.dir/part1/src/part1.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\client.dir\build.make CMakeFiles/client.dir/part1/src/part1.cpp.i
 .PHONY : part1/src/part1.cpp.i
 
 part1/src/part1.s: part1/src/part1.cpp.s
@@ -211,6 +213,7 @@ part1/src/part1.s: part1/src/part1.cpp.s
 # target to generate assembly for a file
 part1/src/part1.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\server.dir\build.make CMakeFiles/server.dir/part1/src/part1.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\client.dir\build.make CMakeFiles/client.dir/part1/src/part1.cpp.s
 .PHONY : part1/src/part1.cpp.s
 
 # Help Target
